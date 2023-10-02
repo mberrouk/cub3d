@@ -30,10 +30,14 @@ int	get_data(t_data *data, char *arg, int flag)
 		len--;
 	}
 	if (len < 3 || ft_strcmp(&arg[len - 3], ".xpm" ))
+	{
 		return (-1);
+	}
 	data->fd[flag] = open(arg, O_RDONLY);
 	if (data->fd[flag] < 0)
+	{
 		return (-1);
+	}
 	return (VALID);
 }
 

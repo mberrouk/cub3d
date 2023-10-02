@@ -20,13 +20,12 @@ int	valid_form(char *arg, int j, int comma)
 						|| arg[j + 1] == '\n')));
 }
 
-int	convert_rgb(char *arg, int *comma, int conver)
+int	convert_rgb(char *arg, int conver)
 {
 	int	i;
 	int	value;
 
 	i = 0;
-	(*comma) += 1;
 	while (WHITESPACE(arg[i]))
 		i++;
 	value = ft_atoi(&arg[i]);
@@ -46,14 +45,19 @@ int	floor_ceiling_value(char *arg, int comma, int conver, int i)
 	{
 		if (valid_form(arg, j, comma))
 			return (-1);
-		if (arg[j] == ',')
-		{
-			arg[j] = '\0';
-			result += convert_rgb(&arg[i], &comma, conver);
-			conver -= 8;
-			i = j + 1;
-		}
 		j++;
+		if (arg[j] == ',' || !arg[j])
+		{
+			if (arg[j])
+			{
+				arg[j] = '\0';
+				comma++;
+				j++;
+			}
+			result += convert_rgb(&arg[i], conver);
+			conver -= 8;
+			i = j;
+		}
 	}
 	if (comma != 2)
 		return (-1);

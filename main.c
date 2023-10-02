@@ -18,6 +18,7 @@ int	main(int ac, char *av[])
 
 	if (init_pars(ac, av, &data) == ERROR)
 		return (1);
+	printf("f -> %d\nc -> %d\n", data.F, data.C);
 	clean_parsing_data(&data);
 	return (0);
 }

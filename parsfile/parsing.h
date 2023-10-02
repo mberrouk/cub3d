@@ -105,7 +105,7 @@ int		init_pars(int ac, char *av[], t_data *data);
 int	check_arg(t_data *data, char *line);
 int	get_floor_ceiling(t_data *data, char *arg, int flag);
 int	floor_ceiling_value(char *arg, int comma, int conver, int i);
-int	convert_rgb(char *arg, int *comma, int conver);
+int	convert_rgb(char *arg, int conver);
 int	valid_form(char *arg, int j, int comma);
 
 /**
